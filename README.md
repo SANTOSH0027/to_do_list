@@ -30,7 +30,8 @@ Each task entry supports accurate selection of date and time so you never miss a
 
 Made by **G Santosh Kumar**  
 ![image](https://github.com/user-attachments/assets/1cc13b81-bcec-45df-a3cf-8a405f2c3520)
-![image](https://github.com/user-attachments/assets/c3ee9c09-63f2-4151-b4e0-54c1bcda4846)
+![image](https://github.com/user-attachments/assets/754baa55-79fe-4b45-adbc-429d28dea16a)
+
 
 
 
