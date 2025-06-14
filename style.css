@@ -1,0 +1,293 @@
+:root {
+    /* Light theme colors */
+    --light-bg-color: #ffffff;
+    --light-text-color: #2c3e50;
+    --light-primary-color: #1e40af;
+
+    /* Dark theme colors */
+    --dark-bg-color: #121212;
+    --dark-text-color: #e0e0e0;
+    --dark-primary-color: #60a5fa;
+
+    /* Common layout variables */
+    --border-radius: 12px;
+    --spacing: 16px;
+    --transition-time: 0.3s;
+  }
+
+  /* Base styles for the page */
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    transition: background-color var(--transition-time), color var(--transition-time), font-family var(--transition-time);
+    padding-bottom: 80px; /* reserve space for footer */
+  }
+
+  /* Dark theme styles: applied when body has 'dark' class */
+  body.dark {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  /* Container for the app - sets max width and centralized layout */
+  #app {
+    width: 100%;
+    max-width: 480px;
+    background-color: inherit; /* Matches current theme background */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    border-radius: var(--border-radius);
+    padding: var(--spacing);
+  }
+
+  /* Header styles: app title and theme toggle button */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing);
+  }
+
+  header h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+  }
+
+  /* Theme toggle button styles */
+  #theme-toggle {
+    font-size: 1.25rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    padding: 8px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-time);
+  }
+  #theme-toggle:hover,
+  #theme-toggle:focus-visible {
+    background-color: rgba(100, 100, 255, 0.1);
+    outline: none;
+  }
+
+  /* The task input form uses grid layout so inputs and button line up nicely */
+  form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--spacing);
+    margin-bottom: var(--spacing);
+  }
+
+  /* Text input for task name */
+  input[type="text"] {
+    font-size: 1rem;
+    padding: 12px;
+    border: 2px solid #ccc;
+    border-radius: var(--border-radius);
+    transition: border-color var(--transition-time);
+  }
+  input[type="text"]:focus {
+    border-color: var(--light-primary-color);
+    outline: none;
+  }
+  body.dark input[type="text"]:focus {
+    border-color: var(--dark-primary-color);
+  }
+
+  /* Date and time inputs share styling */
+  input[type="date"],
+  input[type="time"] {
+    font-size: 1rem;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: var(--border-radius);
+    max-width: 140px;
+    transition: border-color var(--transition-time);
+  }
+  input[type="date"]:focus,
+  input[type="time"]:focus {
+    border-color: var(--light-primary-color);
+    outline: none;
+  }
+  body.dark input[type="date"]:focus,
+  body.dark input[type="time"]:focus {
+    border-color: var(--dark-primary-color);
+  }
+
+  /* Submit button styling */
+  button[type="submit"] {
+    background-color: var(--light-primary-color);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    padding: 12px;
+    transition: background-color var(--transition-time);
+  }
+  button[type="submit"]:hover,
+  button[type="submit"]:focus-visible {
+    background-color: #1e3a8a;
+    outline: none;
+  }
+  body.dark button[type="submit"] {
+    background-color: var(--dark-primary-color);
+  }
+  body.dark button[type="submit"]:hover,
+  body.dark button[type="submit"]:focus-visible {
+    background-color: #3b82f6;
+  }
+
+  /* Unordered list to display tasks cleanly */
+  ul#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Each task item styles */
+  ul#task-list li {
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+    padding: var(--spacing);
+    margin-bottom: var(--spacing);
+    border-radius: var(--border-radius);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color var(--transition-time), color var(--transition-time);
+  }
+  body.dark ul#task-list li {
+    background-color: #1f2937;
+    color: var(--dark-text-color);
+  }
+
+  /* Completed tasks get line-through and fade */
+  ul#task-list li.completed span.task-name {
+    text-decoration: line-through;
+    opacity: 0.6;
+  }
+
+  /* Task name expands to fill space */
+  span.task-name {
+    flex-grow: 1;
+  }
+
+  /* Showing due date/time next to name in a muted style */
+  span.task-due {
+    margin-left: var(--spacing);
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  body.dark span.task-due {
+    color: #9ca3af;
+  }
+
+  /* Remove button (red X) */
+  button.remove-task {
+    background: transparent;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 1.3rem;
+    padding: 4px 8px;
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-time);
+  }
+  button.remove-task:hover,
+  button.remove-task:focus-visible {
+    background-color: rgba(239,68,68,0.2);
+    outline: none;
+  }
+
+  /* Checkboxes are bigger and spaced nicely */
+  input[type="checkbox"] {
+    transform: scale(1.3);
+    margin-right: var(--spacing);
+    cursor: pointer;
+  }
+
+  /* Responsive adjustments for small screens: stack inputs vertically */
+  @media (max-width: 480px) {
+    form {
+      grid-template-columns: 1fr;
+    }
+    input[type="date"],
+    input[type="time"] {
+      max-width: 100%;
+    }
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  /* Footer style with fixed height and centered content */
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-height: 60px;
+    background-color: var(--light-bg-color);
+    color: var(--light-text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: 600;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+    z-index: 9999;
+    padding: 0 12px;
+    transition: background-color var(--transition-time), color var(--transition-time), font-family var(--transition-time);
+    user-select: none;
+  }
+  body.dark footer {
+    background-color: var(--dark-bg-color);
+    color: var(--dark-text-color);
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .footer-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 480px;
+    width: 100%;
+  }
+
+  .made-by {
+    white-space: nowrap;
+  }
+
+  /* Container for the animated name */
+  .animated-name {
+    position: relative;
+    flex-grow: 1;
+    height: 24px;
+    overflow: hidden;
+  }
+
+  /* Each name rendered absolutely and faded in/out sequentially */
+  .animated-name span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    opacity: 0;
+    transition: opacity 0.01s ease;
+    text-align: left;
+    direction: ltr;
+  }
+
+  .animated-name span.active {
+    opacity: 1;
+    position: relative;
+  }
