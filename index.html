@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Simple To-Do List App - Light & Dark Themes</title>
+<!-- Import fonts: Inter for light theme, Montserrat for dark theme -->
+<link href="https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app" role="main" aria-label="Todo List Application">
+    <!-- Header with title and theme toggle -->
+    <header>
+      <h1>My Todo List</h1>
+      <button id="theme-toggle" aria-label="Toggle dark/light theme" title="Toggle theme">🌙</button>
+    </header>
+
+    <!-- Form for entering new tasks -->
+    <form id="todo-form" autocomplete="off">
+      <input
+        type="text"
+        id="task-name"
+        name="taskName"
+        placeholder="Enter task name"
+        required
+        aria-required="true"
+        aria-label="Task name"
+      />
+      <input type="date" id="due-date" name="dueDate" aria-label="Due date" />
+      <input type="time" id="due-time" name="dueTime" aria-label="Due time" />
+      <button type="submit" aria-label="Add task">Add</button>
+    </form>
+
+    <!-- List to display all tasks -->
+    <ul id="task-list" aria-live="polite" aria-relevant="additions removals"></ul>
+  </div>
+
+  <!-- Footer with credit and sequential animated multilingual name -->
+  <footer aria-label="Page footer with credit and scrolling name">
+    <div class="footer-content">
+      <div class="made-by" aria-label="Credit text">CREDITS</div>
+      <div class="animated-name" aria-live="off" aria-atomic="true" aria-relevant="text" aria-label="Name in multiple languages" id="animated-name-container">
+        <span>SANTOSH</span>
+        <span>संतोष</span> <!-- Hindi -->
+        <span>సంతోష్</span> <!-- Telugu -->
+        <span>산토시</span> <!-- Korean -->
+        <span>サントシュ</span> <!-- Japanese Katakana -->
+        <span>सन्तोष</span> <!-- Sanskrit -->
+      </div>
+    </div>
+  </footer>
+
+<script src="script.js"></script>
+</body>
+</html>
+
